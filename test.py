@@ -1,6 +1,6 @@
 import requests
 
-BASE = "http://127.0.0.1:5000/"
+BASE = "https://api-rest-t2.herokuapp.com/"
 
 data = [{'name': "Elena Celedon", 'age': 23},
         {'name': "Cher", 'age': 67},
