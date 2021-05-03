@@ -99,10 +99,16 @@ class Artist(Resource):
             abort(404, message="No existe un Artista con ese ID")
         return result, 200
 
-    def delete(self, artist_id):  ## ARREGLAR
+    def delete(self, artist_id):
         result = ArtistModel.query.filter_by(id=artist_id).first()
         if not result:
             abort(404, message="No existe un Artista con ese ID")
+        result1 = AlbumModel.query.filter_by(artist_id=artist_id).all()
+        for a in result1:
+            db.session.delete(a)
+        result2 = TrackModel.query.filter_by(artist=f"artists/{artist_id}").all()
+        for t in result2:
+            db.session.delete(t)
         db.session.delete(result)
         db.session.commit()
         return '', 204
@@ -208,10 +214,13 @@ class Album(Resource):
             abort(404, message="No existe un album con ese ID")
         return result, 200
 
-    def delete(self, album_id): ## ARREGLAR!!!
+    def delete(self, album_id):
         result = AlbumModel.query.filter_by(id=album_id).first()
         if not result:
             abort(404, message="No existe un album con ese ID")
+        result2 = TrackModel.query.filter_by(album_id=album_id).all()
+        for t in result2:
+            db.session.delete(t)
         db.session.delete(result)
         db.session.commit()
         return '', 204
