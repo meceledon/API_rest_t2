@@ -40,7 +40,6 @@ class TrackModel(db.Model):
     album = db.Column(db.String)
     self_a = db.Column(db.String)
 
-db.create_all()
 
 artists_post_args = reqparse.RequestParser()
 artists_post_args.add_argument("name", type=str, help="Falta el nombre del artista", required=True)
