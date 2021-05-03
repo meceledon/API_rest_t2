@@ -1,6 +1,6 @@
 import requests
 
-BASE = "https://api-rest-t2.herokuapp.com/"
+BASE = "http://127.0.0.1:5000/"
 
 data = [{'name': "Elena Celedon", 'age': 23},
         {'name': "Cher", 'age': 67},
@@ -17,3 +17,16 @@ print(response.json())
 input()
 response = requests.get(BASE + "artists/holi")
 print(response.json())
+input()
+response = requests.post(BASE + "artists/RWxlbmEgQ2VsZWRvbg==/albums", {'name': "album1", 'genre': "pop"})
+print(response.json())
+input()
+response = requests.get(BASE + "artists/RWxlbmEgQ2VsZWRvbg==/albums")
+print(response.json())
+input()
+response = requests.put(BASE + "artists/RWxlbmEgQ2VsZWRvbg==/albums/play")
+print(response)
+'''input()
+response = requests.get(BASE + "artists/RWxlbmEgQ2VsZWRvbg==/tracks")
+print(response.json())
+'''
