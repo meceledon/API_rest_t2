@@ -242,7 +242,7 @@ class AlbumTracks(Resource):
         args = tracks_post_args.parse_args()
         pre_codificado = args['name'] + ":" + album_id
         encoded = b64encode(pre_codificado.encode()).decode('utf-8')[:22]
-        result2 = AlbumModel.query.filter_by(id=encoded).first()
+        result2 = TrackModel.query.filter_by(id=encoded).first()
         if result2:
             return result2, 409
         track_artist = BASE + f"artists/{result1.artist_id}"

@@ -26,6 +26,8 @@ print(response.json())
 input()
 response = requests.put(BASE + "artists/RWxlbmEgQ2VsZWRvbg==/albums/play")
 print(response)
+input()
+
 '''input()
 response = requests.get(BASE + "artists/RWxlbmEgQ2VsZWRvbg==/tracks")
 print(response.json())
